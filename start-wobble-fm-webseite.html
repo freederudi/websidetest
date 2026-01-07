@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>wobble 2026-01-05</title>
+
+  <style>
+    /* Hydra canvas as full-screen background behind content */
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    #hydraCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none; /* clicks pass through */
+      z-index: -1;           /* behind page content */
+      display: block;
+    }
+
+    /* Your page container (place your page markup inside .page) */
+    .page {
+      position: relative;
+      z-index: 0;
+      min-height: 100vh;
+      color: rgb(148, 0, 255);
+      background-color: transparent; /* keep canvas visible */
+      font-family: sans-serif;
+      box-sizing: border-box;
+    }
+
+    /* Keep any global styles you need below (example safe defaults) */
+    *, *::before, *::after { box-sizing: inherit; }
+  </style>
+</head>
+<body>
+  <canvas id="hydraCanvas"></canvas>
+
+  <div class="page">
+    <!-- START: your existing page content goes here -->
+    <header>
+      <h1>wobble 2026-01-05</h1>
+    </header>
+
+    <main>
+      <!-- Replace with original content from your file -->
+      <p>Your site content — keep interactive elements here.</p>
+    </main>
+    <!-- END: page content -->
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/hydra-synth"></script>
+  <script>
+    // Initialize Hydra targeting the full-screen canvas
+    const hydra = new Hydra({ canvas: document.getElementById('hydraCanvas') });
+
+    // Example scene — replace with your live-coding code
+    osc(10, 0.1, 1.0)
+      .color(1.0, 0.5, 0.2)
+      .rotate(0.1, 0.1)
+      .modulate(noise(3), 0.1)
+      .out();
+
+    // Optional: allow resizing behavior if needed (Hydra usually handles it)
+    window.addEventListener('resize', () => {
+      // if you need special handling, add it here
+    });
+  </script>
+</body>
+</html>
